@@ -1,11 +1,9 @@
 require 'sinatra/base'
 require './app/models/link'
 
-class BookmarkManager < Sinatra::Base
+ENV['RACK_ENV'] ||= 'development'
 
-  get '/' do
-    'Hello bookmark_manager!'
-  end
+class BookmarkManager < Sinatra::Base
 
   get '/links' do
     @links = Link.all
