@@ -11,4 +11,18 @@ feature 'Sign_up_users' do
     expect(current_path).to eq('/users')
     expect(page).to have_content('Password and confirmation password do not match')
   end
+
+  scenario 'blank email field' do
+    expect{ sign_up(email: nil)}.not_to change(User, :count)
+    expect(current_path).to eq('/users')
+    # expect(page).to have_content('Please submit a valid email address')
+  end
+
+  scenario 'incorrect email format' do
+    expect{ sign_up(email: 'dave@stuff')}.not_to change(User, :count)
+    expect(current_path).to eq('/users')
+    # expect(page).to have_content('Please submit a valid email address')
+  end
+
+
 end
