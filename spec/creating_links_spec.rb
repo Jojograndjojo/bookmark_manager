@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 feature 'adding new links' do
   scenario 'adding one link' do
     visit('/links')
