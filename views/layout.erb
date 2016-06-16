@@ -5,8 +5,10 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div id='notice'><%= flash[:notice] %></div>
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <div id='notice'><%= error %></div><br>
+      <% end %>
     <% end %>
     <% if current_user %>
       Welcome, <%= current_user.email %>

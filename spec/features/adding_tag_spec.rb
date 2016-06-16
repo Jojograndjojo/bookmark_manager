@@ -18,7 +18,6 @@ feature 'adding a tags' do
     fill_in :title, with: 'MA'
     fill_in :tags, with: 'education ruby'
     click_button 'Add Link'
-
     link = Link.first
     expect(link.tags.map(&:name)).to include('education', 'ruby')
   end

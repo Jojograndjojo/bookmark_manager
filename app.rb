@@ -34,7 +34,6 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/users/new' do
-    @user = User.new
     erb :'users/new'
   end
 
@@ -46,14 +45,32 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = @user.id
       redirect('/links')
     else
-      flash.now[:notice] = "Password and confirmation password do not match"
+      flash.now[:errors] = @user.errors.full_messages
       erb :'users/new'
+    end
+  end
+
+  get '/users/sign_in' do
+    erb :'users/sign_in'
+  end
+
+  post '/users/sign_in' do
+    if @user = User.authenticate(params)
+      session[:user_id] = @user.id
+      redirect('/links')
+    else
+      flash.now[:errors] = ['There was a problem.']
+      erb :'users/sign_in'
     end
   end
 
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])
+    end
+
+    def user
+      @user ? @user : User.new
     end
   end
 

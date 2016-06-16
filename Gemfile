@@ -17,4 +17,5 @@ group :other_gems do
   gem 'rake'
   gem 'bcrypt'
   gem 'sinatra-flash'
+  gem 'sinatra-redirect-with-flash'
 end
