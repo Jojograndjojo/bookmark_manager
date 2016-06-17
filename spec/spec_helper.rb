@@ -2,7 +2,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-require_relative 'features/web_helpers'
+require_relative 'helpers/session'
 
 require 'capybara'
 require 'capybara/rspec'
@@ -33,4 +33,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+RSpec.configure do |config|
+  config.include SessionHelpers
 end
