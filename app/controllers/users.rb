@@ -39,4 +39,13 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
+  get '/users/reset_password' do
+    erb :'users/reset_password'
+  end
+
+  post '/users/reset_password' do
+    session[:message] = 'Please check your e-mail'
+    redirect 'users/sign_in'
+  end
+
 end

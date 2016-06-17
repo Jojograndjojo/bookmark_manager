@@ -32,7 +32,7 @@ feature 'Sign_up_users' do
 
   scenario 'user can sign in and welcome message displayed' do
     email = 'alice2@example.com'
-    sign_up(email: email)  
+    sign_up(email: email)
     sign_up(password: '12345678xx',
             password_confirmation: '12345678xx')
     sign_in(email: email)
@@ -53,5 +53,7 @@ feature 'Sign_up_users' do
     sign_in(email: email, password: 'xxxxx')
     expect(page).to_not have_content("Welcome, #{email}")
   end
+
+
 
 end

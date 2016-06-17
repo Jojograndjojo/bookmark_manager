@@ -1,13 +1,17 @@
 <form action='/users/sign_in' method='post'>
-  
+
   <label for="email">
     Email: <input type='email' name='email' value='<%= user.email %>' >
   </label>
-  
+
   <label for="password">
     Password: <input type='password' name='password' required>
   </label>
-  
+
   <input type='submit' value='Sign in'>
 
+</form>
+
+<form action='/users/reset_password' method='get'>
+  <input type='submit' value='Reset Password'>
 </form>
